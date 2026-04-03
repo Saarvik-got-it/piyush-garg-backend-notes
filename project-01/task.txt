@@ -1,0 +1,22 @@
+JSON Rest API
+
+HYBRID SERVER
+* Normal urls for browser clients
+* /api urls for cross platform support
+
+GET /users - List users in HTML format
+GET /api/users - List all users JSON - Done
+
+Dynamic Path Parameters : 
+GET /api/users/:id
+:id - Variable | Dynamic
+
+GET /api/users/1 - Get user with user ID 1 - Done
+GET /api/users/1 - Get user with user ID 2 - Done
+
+POST /api/users - Creates new user
+
+PATCH /api/users/1 - Edit user with ID 1     
+PATCH /api/users/2 - Edit user with ID 2     
+
+DELETE /api/users/1 - Delete user with ID 1 
