@@ -11,6 +11,25 @@ const PORT = 8000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); //Receives form data from post request and puts into body
 
+//Custom Middleware
+app.use((req, res, next) => {
+  console.log("Hello from Middleware 1 ");
+  req.myUserName = "Piyush Garg";
+
+  fs.appendFile(
+    "./log.txt",
+    `${Date.now()}: ${req.ip}: ${req.method}: ${req.path}\n`,
+    (err, data) => {
+      next(); //Passes on request to next middleware
+    },
+  );
+});
+
+app.use((req, res, next) => {
+  console.log("Hello from Middleware 2 ", req.myUserName);
+  next(); //Passes on request to next middleware
+});
+
 //ROUTES
 
 app.get("/users", (req, res) => {
@@ -34,6 +53,7 @@ app.get("/users", (req, res) => {
 
 // GET /api/users - List all users in JSON format
 app.get("/api/users", (req, res) => {
+  console.log("I am in get route", req.myUserName);
   return res.json(users);
 });
 
