@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+
 const {
   handleGetAllUsers,
   handleGetUserById,
@@ -9,7 +10,8 @@ const {
   handleCreateNewUser,
 } = require("../controllers/user");
 
-router.route("./")
+
+router.route("/")
   .get(handleGetAllUsers)
   .post(handleCreateNewUser);
 
@@ -19,4 +21,4 @@ router
   .patch(handleUpdateUserById)
   .delete(handleDeleteUserById);
 
-module.exports = Router;
+module.exports = router;
