@@ -53,6 +53,9 @@ app.get("/users", (req, res) => {
 
 // GET /api/users - List all users in JSON format
 app.get("/api/users", (req, res) => {
+  console.log(req.headers);
+  res.setHeader("myName", "Saarvik"); //Custom Header
+  //Always add X prefix to custom headers
   console.log("I am in get route", req.myUserName);
   return res.json(users);
 });
