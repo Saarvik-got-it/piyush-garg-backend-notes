@@ -1,0 +1,26 @@
+const mongoose = require("mongoose");
+
+//Model Schema
+const urlSchema = new mongoose.Schema(
+  {
+    shortId: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    redirectUrl: {
+      type: String,
+      required: true,
+    },
+    visitHistory: [{ timeStamp: { type: Number } }],
+  },
+  { timestamps: true },
+);
+
+//Model Creation
+const URL = mongoose.model("url", urlSchema);
+
+//Export Model
+module.exports = {
+  URL,
+};
